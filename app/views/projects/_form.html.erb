@@ -1,0 +1,66 @@
+<%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+<table border = "5" cellspacing="0" bgcolor="FFFFE0">
+
+  <tr><center>
+    <th>Product Line</th>
+    <th>Program</th>
+    <th>Project Name</th>
+    <th>Requested Date</th>
+    <th>Projected Date</th>
+    <th>Phase</th>
+    <th>Priority</th> %>
+    <th>Sponsor</th>
+    <th>Owner</th>
+    <th>Status</th>
+    <th>Notes</th>
+  </tr>
+
+  <tr>
+    <td><div class="field">
+      <%= f.text_field :product_line %>
+    </div></td>
+    <td><div class="field">
+      <%= f.text_field :program_name %>
+    </div></td>
+    <td><div class="field">
+      <%= f.text_field :project_name %>
+    </div></td>
+    <td><%= "requested date" %></td>
+    <td><%= "projected date" %></td>
+    <td><div class="field">
+      <%= f.select :project_phase, [['Complete', 'Complete'], ['Conception', 'Conception'], ['Validation', 'Validation'], ['Execution', 'Execution'], ['On-Hold', 'On-Hold']] %>
+    </div></td>
+    <td><%= "A" %></td>
+    <td><div class="field">
+      <%= f.label :sponsor, 'PD Led' %> 
+      <%= f.check_box :sponsor %>
+    </div></td>
+    <td><div class="field">
+      <%= f.collection_select :owner, Person.all, :id, :name, prompt: true %>
+    </div></td>
+    <td><div class="field">
+      <%= f.select :proj_status, [['Blue', 'Blue'], ['Green', 'Green'], ['Yellow', 'Yellow'], ['Red', 'Red']] %>
+    </div></td>
+    <td><div class="field">
+      <%= f.text_area :proj_notes %>
+    </div></td>
+  </tr>
+</table>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

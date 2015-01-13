@@ -1,0 +1,8 @@
+<h1>Editing <%= @project.project_name %> Project </h1>
+
+<%= render 'form' %>
+
+<button><%= link_to 'Back to This Projects Page', @project %></button> 
+<button><%= link_to 'Back to Project Dashboard', projects_path %></button>
+<button><%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+

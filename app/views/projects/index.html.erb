@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<h1><center>Projects Dashboard</center></h1>
+
+<table>
+<table border = "4" cellspacing="1" bgcolor="#FFFFE0">
+  <thead>
+    <tr>
+      <th>Product Line</th>
+      <th>Program</th>
+      <th>Project</th>
+      <th>Requested Date</th>
+      <th>Projected Date</th>
+      <th>Phase</th>
+      <th>Priority</th>
+      <th>Sponsor</th>
+      <th>Owner</th>
+      <th>Status</th>
+      <th>Notes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.product_line %></td>
+        <td><%= project.program_name %></td>
+	<td><%= project.project_name %></td>
+        <td><%= "Req Date" %></td>
+        <td><%= "Proj Date" %></td>
+        <td><%= project.project_phase %></td>
+        <td><%= "A" %></td>
+        <td><%= project.sponsor %></td>
+        <td><%= project.owner %></td>
+        <td><%= project.proj_status %></td>
+        <td><%= project.proj_notes %></td>
+        <td><%= link_to 'Project Detail', project %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Project', new_project_path %>

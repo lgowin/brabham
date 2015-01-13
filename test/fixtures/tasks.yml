@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_id: 1
+  task_num: 1
+  task_name: MyString
+  person_id: 1
+  pct_time: 1
+  base_start: 2015-01-11
+  base_finish: 2015-01-11
+  proj_start: 2015-01-11
+  proj_finish: 2015-01-11
+  task_deps: 1
+  task_status: MyString
+  task_notes: MyText
+
+two:
+  project_id: 1
+  task_num: 1
+  task_name: MyString
+  person_id: 1
+  pct_time: 1
+  base_start: 2015-01-11
+  base_finish: 2015-01-11
+  proj_start: 2015-01-11
+  proj_finish: 2015-01-11
+  task_deps: 1
+  task_status: MyString
+  task_notes: MyText

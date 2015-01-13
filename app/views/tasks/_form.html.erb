@@ -1,0 +1,65 @@
+<%= form_for([@project, @task]) do |f| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :project_id %><br>
+    <%= f.number_field :project_id %>
+  </div>
+  <div class="field">
+    <%= f.label :task_num %><br>
+    <%= f.number_field :task_num %>
+  </div>
+  <div class="field">
+    <%= f.label :task_name %><br>
+    <%= f.text_field :task_name %>
+  </div>
+  <div class="field">
+    <%= f.label :person_id %><br>
+    <%= f.collection_select :person_id, Person.all, :id, :name, prompt: true %>
+  </div>
+  <div class="field">
+    <%= f.label :pct_time %><br>
+    <%= f.number_field :pct_time %>
+  </div>
+  <div class="field">
+    <%= f.label :base_start %><br>
+    <%= f.datetime_picker :base_start %>
+  </div>
+  <div class="field">
+    <%= f.label :base_finish %><br>
+    <%= f.date_select :base_finish %>
+  </div>
+  <div class="field">
+    <%= f.label :proj_start %><br>
+    <%= f.date_select :proj_start %>
+  </div>
+  <div class="field">
+    <%= f.label :proj_finish %><br>
+    <%= f.date_select :proj_finish %>
+  </div>
+  <div class="field">
+    <%= f.label :task_deps %><br>
+    <%= f.number_field :task_deps %>
+  </div>
+  <div class="field">
+    <%= f.label :task_status %><br>
+    <%= f.text_field :task_status %>
+  </div>
+  <div class="field">
+    <%= f.label :task_notes %><br>
+    <%= f.text_area :task_notes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

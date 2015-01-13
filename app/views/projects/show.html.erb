@@ -1,0 +1,101 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Project name:</strong>
+  <%= @project.project_name %>
+</p>
+
+<p>
+  <strong>Product line:</strong>
+  <%= @project.product_line %>
+</p>
+
+<p>
+  <strong>Program name:</strong>
+  <%= @project.program_name %>
+</p>
+
+<p>
+  <strong>Project phase:</strong>
+  <%= @project.project_phase %>
+</p>
+
+<p>
+  <strong>Sponsor:</strong>
+  <%= @project.sponsor %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @project.owner %>
+</p>
+
+<p>
+  <strong>Proj status:</strong>
+  <%= @project.proj_status %>
+</p>
+
+<p>
+  <strong>Proj notes:</strong>
+  <%= @project.proj_notes %>
+</p>
+
+<button><%= link_to 'Edit Project Details', edit_project_path(@project) %> |
+
+<%= link_to 'Main Project Page', projects_path %></button>
+
+<h2>Tasks</h2>
+
+
+<table>
+<table border = "5" cellspacing="0" bgcolor="FFFFE0">
+  <col width="30">
+  <col width="30">
+  <col width="30">
+  <col width="175">
+  <col width="75">
+  <col width="50">
+  <col width="100">
+  <col width="100">
+  <col width="75">
+  <col width="50">
+  <col width="250">
+
+
+  <tr>
+    <th></th>
+    <th></th>
+    <th>Num</th>
+    <th>Task Name</th>
+    <th>Name</th>
+    <th>% of Time</th>
+    <th>Baseline</th>
+    <th>Projected</th>
+    <%# <th>Projected Start</th> %>
+    <%# <th>Projected Finish</th> %>
+    <th>Deps</th>
+    <th>Status</th>
+    <th>Notes</th>
+  </tr>
+<% for task in @project.tasks %>
+  <tr>
+    <td><%= link_to 'Edit', edit_project_task_path(@project, task) %>
+    <td><%= link_to 'Del', [@project, task], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= task.task_num %></td>
+    <td><%= task.task_name %></td>
+    <td>
+        <% id = task.person_id %>
+        <%= Person.find_by_id(id).name %>
+        <%#= @person.name[:id] %></td>
+    <td><%= task.pct_time %>
+    <td><%= task.base_start %>
+    <%= task.base_finish %></td>
+    <td><%= task.proj_start %>
+    <%= task.proj_finish %></td>
+    <td><%= task.task_deps %></td>
+    <td><%= task.task_status %></td>
+    <td><%= task.task_notes %></td>
+  </tr>
+<% end %>
+
+<%= link_to 'New Task', new_project_task_path(@project) %>
